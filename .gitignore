@@ -2,6 +2,6 @@
 /lottery-application/lottery-application.iml
 /lottery-common/lottery-common.iml
 /lottery-domain/lottery-domain.iml
-/lottery-infrastructure/lottery-infrastructure.iml
+/lottery-com.jun.lottery.infrastructure/lottery-com.jun.lottery.infrastructure.iml
 /lottery-interfaces/lottery-interfaces.iml
 /lottery-rpc/lottery-rpc.iml
