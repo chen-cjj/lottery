@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jun.lottery.infrastructure.dao.IStrategyDetailDao">
+    <!--List<StrategyDetail> queryStrategyDetailList(Long strategyId);-->
+    <select id="queryStrategyDetailList" parameterType="java.lang.Long" resultType="com.jun.lottery.infrastructure.po.StrategyDetail">
+        SELECT id, strategyId, awardId, awardCount, awardRate, createTime, updateTime
+        from strategy_detail
+        where strategyId = #{strategyId};
+    </select>
+    <!--List<String> queryNoStockStrategyAwardList(Long strategyId);-->
+    <select id="queryNoStockStrategyAwardList" parameterType="java.lang.Long" resultType="java.lang.String">
+        select awardId
+        from strategy_detail
+        where strategyId = #{strategyId} and awardSurplusCount = 0;
+    </select>
+    <!--int deductStock(StrategyDetail strategyDetailReq);-->
+    <update id="deductStock" parameterType="com.jun.lottery.infrastructure.po.StrategyDetail">
+        update strategy_detail set awardSurplusCount = awardSurplusCount - 1
+        where strategyId = #{strategyId} and awardId = #{awardId} and awardSurplusCount > 0;
+    </update>
+</mapper>
