@@ -1,6 +1,7 @@
 package com.jun.lottery.domain.strategy.service.algorithm;
 /*
  * @author cjj
+ * 策略的实现，初始化，具体的实现放在具体策略里
  * */
 
 import com.jun.lottery.domain.strategy.model.vo.AwardRateInfo;

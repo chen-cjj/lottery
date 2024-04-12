@@ -82,7 +82,7 @@
 ```xml
 <parent>
     <artifactId>Lottery</artifactId>
-    <groupId>cn.itedus.lottery</groupId>
+    <groupId>com.jun.lottery</groupId>
     <version>1.0-SNAPSHOT</version>
 </parent>
 <modelVersion>4.0.0</modelVersion>
@@ -92,7 +92,7 @@
 
 <dependencies>
     <dependency>
-        <groupId>cn.itedus.lottery</groupId>
+        <groupId>com.jun.lottery</groupId>
         <artifactId>lottery-common</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
@@ -225,7 +225,7 @@ dubbo:
     name: dubbo
     port: 20880
   scan:
-    base-packages: cn.itedus.lottery.rpc
+    base-packages: com.jun.lottery.rpc
 ```
 
 - 广播模式的配置唯一区别在于注册地址，`registry.address = multicast://224.5.6.7:1234`，服务提供者和服务调用者都需要配置相同的📢广播地址。
@@ -295,7 +295,7 @@ public class ActivityBooth implements IActivityBooth {
 
 ```xml
 <dependency>
-    <groupId>cn.itedus.lottery</groupId>
+    <groupId>com.jun.lottery</groupId>
     <artifactId>lottery-rpc</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
@@ -351,7 +351,7 @@ public class ApiTest {
 **测试结果**
 
 ```java
-2021-08-08 12:07:34.898  INFO 9474 --- [           main] cn.itedus.lottery.test.SpringRunnerTest           : 测试结果：{"activity":{"activityDesc":"傅哥的活动","activityId":100001,"activityName":"测试活动","beginDateTime":1628061494000,"endDateTime":1628061494000,"stockCount":100,"takeCount":10},"result":{"code":"0000","info":"成功"}}
+2021-08-08 12:07:34.898  INFO 9474 --- [           main] com.jun.lottery.test.SpringRunnerTest           : 测试结果：{"activity":{"activityDesc":"傅哥的活动","activityId":100001,"activityName":"测试活动","beginDateTime":1628061494000,"endDateTime":1628061494000,"stockCount":100,"takeCount":10},"result":{"code":"0000","info":"成功"}}
 2021-08-08 12:07:34.915  INFO 9474 --- [extShutdownHook] .b.c.e.AwaitingNonWebApplicationListener :  [Dubbo] Current Spring Boot Application is about to shutdown...
 ```
 

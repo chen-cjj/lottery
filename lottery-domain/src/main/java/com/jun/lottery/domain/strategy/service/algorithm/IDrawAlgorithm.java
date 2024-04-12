@@ -1,6 +1,7 @@
 package com.jun.lottery.domain.strategy.service.algorithm;
 /*
  * @author cjj
+ * 策略接口
  * */
 
 import com.jun.lottery.domain.strategy.model.vo.AwardRateInfo;

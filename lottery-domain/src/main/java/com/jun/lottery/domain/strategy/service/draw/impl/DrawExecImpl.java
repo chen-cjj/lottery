@@ -27,7 +27,9 @@ public class DrawExecImpl extends AbstractDrawBase {
         log.info("执行抽奖策略 strategyId：{}，无库存排除奖品列表ID集合 awardList：{}", strategyId, JSON.toJSONString(awardList));
         return awardList;
     }
-
+    /*
+    * 抽奖执行
+    * */
     @Override
     protected String drawAlgorithm(Long strategyId, IDrawAlgorithm drawAlgorithm, List<String> excludeAwardIds) {
         // 执行抽奖

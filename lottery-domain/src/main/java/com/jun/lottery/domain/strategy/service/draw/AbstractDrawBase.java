@@ -71,9 +71,9 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
     private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetailList) {
 
         // 非单项概率，不必存入缓存
-        if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) {
-            return;
-        }
+//        if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) {
+//            return;
+//        }
 
         IDrawAlgorithm drawAlgorithm = drawAlgorithmMap.get(strategyMode);
 
@@ -87,7 +87,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         for (StrategyDetail strategyDetail : strategyDetailList) {
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
         }
-
+        // 调用策略的初始化方法
         drawAlgorithm.initRateTuple(strategyId, awardRateInfoList);
 
     }
@@ -107,7 +107,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         }
 
         Award award = super.queryAwardInfo(awardId);
-        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardName());
+        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardName(),award.getAwardType(),award.getAwardContent());
         log.info("执行策略抽奖完成【已中奖】，用户：{} 策略ID：{} 奖品ID：{} 奖品名称：{}", uId, strategyId, awardId, award.getAwardName());
 
         return new DrawResult(uId, strategyId, Constants.DrawState.SUCCESS.getCode(), drawAwardInfo);

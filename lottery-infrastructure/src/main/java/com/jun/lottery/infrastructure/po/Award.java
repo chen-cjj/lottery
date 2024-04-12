@@ -3,34 +3,36 @@ package com.jun.lottery.infrastructure.po;
 import java.util.Date;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
+ * @description: 奖品表
+ * @author: 小傅哥，微信：fustack
+ * @date: 2021/9/4
+ * @github: https://github.com/fuzhengwei
+ * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 public class Award {
 
-    // 自增ID
+    /** 自增ID */
     private Long id;
 
-    // 奖品ID
+    /** 奖品ID */
     private String awardId;
 
-    // 奖品类型（文字描述、兑换码、优惠券、实物奖品暂无）
+    /** 奖品类型（1:文字描述、2:兑换码、3:优惠券、4:实物奖品） */
     private Integer awardType;
 
-    // 奖品数量
+    /** 奖品数量 */
     private Integer awardCount;
 
-    // 奖品名称
+    /** 奖品名称 */
     private String awardName;
 
-    // 奖品内容「文字描述、Key、码」
+    /** 奖品内容「描述、奖品码、sku」 */
     private String awardContent;
 
-    // 创建时间
+    /** 创建时间 */
     private Date createTime;
 
-    // 修改时间
+    /** 修改时间 */
     private Date updateTime;
 
     public Long getId() {

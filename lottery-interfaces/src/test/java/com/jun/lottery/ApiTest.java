@@ -116,7 +116,7 @@ public class ApiTest {
         SecureRandom random = new SecureRandom();
 
         for (int i = 0; i < 20; i++) {
-            System.out.println(random.nextInt(100)+1);
+            System.out.println(random.nextInt(1));
         }
 
 

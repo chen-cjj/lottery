@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jun.lottery.infrastructure.dao.IStrategyDao">
-    <!--Strategy queryStrategy(Long strategyId);-->
-    <select id="queryStrategy" parameterType="java.lang.Long" resultType="com.jun.lottery.infrastructure.po.Strategy">
-        select
-            id,strategyId,strategyDesc,strategyMode,grantType,grantDate,extInfo
-            ,createTime,updateTime
-        from
-            strategy
-        where strategyId = #{strategyId}
+
+    <resultMap id="strategyMap" type="com.jun.lottery.infrastructure.po.Strategy">
+        <id column="id" property="id"/>
+        <result column="strategy_id" property="strategyId"/>
+        <result column="strategy_desc" property="strategyDesc"/>
+        <result column="strategy_mode" property="strategyMode"/>
+        <result column="grant_type" property="grantType"/>
+        <result column="grant_date" property="grantDate"/>
+        <result column="ext_info" property="extInfo"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryStrategy" parameterType="java.lang.Long" resultMap="strategyMap">
+        SELECT
+        id, strategy_id, strategy_desc, strategy_mode, grant_type,
+        grant_date, ext_info, create_time, update_time
+        FROM strategy
+        WHERE strategy_id = #{strategyId}
     </select>
+
 </mapper>

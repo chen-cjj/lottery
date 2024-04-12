@@ -1,8 +1,8 @@
 package com.jun.lottery;
 
+
 import com.jun.lottery.domain.strategy.model.vo.AwardRateInfo;
 import com.jun.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,12 +19,11 @@ import java.util.List;
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
  */
-@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DrawAlgorithmTest {
 
-//    @Resource(name = "defaultRateRandomDrawAlgorithm")
+//    @Resource(name = "entiretyRateRandomDrawAlgorithm")
     @Resource(name = "singleRateRandomDrawAlgorithm")
     private IDrawAlgorithm randomDrawAlgorithm;
 

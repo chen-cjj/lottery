@@ -5,13 +5,14 @@ package com.jun.lottery.domain.strategy.service.algorithm.impl;
 
 import com.jun.lottery.domain.strategy.model.vo.AwardRateInfo;
 import com.jun.lottery.domain.strategy.service.algorithm.BaseAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-
+@Slf4j
 @Component
 public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
     @Override
@@ -23,8 +24,9 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
         List<AwardRateInfo> differenceAwardRateList = new ArrayList();
         for (AwardRateInfo awardRateInfo : awardRateInfoList) {
             // 把库存不为0的放入新的list中，重新计算概率和执行抽奖
+            BigDecimal awardRate = awardRateInfo.getAwardRate();
             if(excludeAwardIds.contains(awardRateInfo.getAwardId())) continue;
-            differenceDenominator.add(awardRateInfo.getAwardRate());
+            differenceDenominator = differenceDenominator.add(awardRate);
             differenceAwardRateList.add(awardRateInfo);
         }
         if(differenceAwardRateList.size()==0) return "";
