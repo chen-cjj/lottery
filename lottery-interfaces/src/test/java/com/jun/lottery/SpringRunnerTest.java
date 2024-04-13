@@ -39,8 +39,8 @@ public class SpringRunnerTest {
 
     private Logger logger = LoggerFactory.getLogger(SpringRunnerTest.class);
 
-//    @Resource
-//    private IActivityDao activityDao;
+    @Resource
+    private IActivityDao activityDao;
 
     @Resource
     private IDrawExec drawExec;
@@ -81,25 +81,25 @@ public class SpringRunnerTest {
 
         logger.info("测试结果：{}", JSON.toJSONString(distributionRes));
     }
-//    @Test
-//    public void test_insert() {
-//        Activity activity = new Activity();
-//        activity.setActivityId(100001L);
-//        activity.setActivityName("测试活动");
-//        activity.setActivityDesc("仅用于插入数据测试");
-//        activity.setBeginDateTime(new Date());
-//        activity.setEndDateTime(new Date());
-//        activity.setStockCount(100);
-//        activity.setTakeCount(10);
-//        activity.setState(0);
-//        activity.setCreator("xiaofuge");
-//        activityDao.insert(activity);
-//    }
-//
-//    @Test
-//    public void test_select() {
-//        Activity activity = activityDao.queryActivityById(100001L);
-//        logger.info("测试结果：{}", JSON.toJSONString(activity));
-//    }
+    @Test
+    public void test_insert() {
+        Activity activity = new Activity();
+        activity.setActivityId(100001L);
+        activity.setActivityName("测试活动");
+        activity.setActivityDesc("仅用于插入数据测试");
+        activity.setBeginDateTime(new Date());
+        activity.setEndDateTime(new Date());
+        activity.setStockCount(100);
+        activity.setTakeCount(10);
+        activity.setState(0);
+        activity.setCreator("xiaofuge");
+        activityDao.insert(activity);
+    }
+
+    @Test
+    public void test_select() {
+        Activity activity = activityDao.queryActivityById(100001L);
+        logger.info("测试结果：{}", JSON.toJSONString(activity));
+    }
 
 }

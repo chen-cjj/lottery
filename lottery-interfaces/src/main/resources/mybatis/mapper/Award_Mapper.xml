@@ -19,4 +19,19 @@
         WHERE award_id = #{awardId}
     </select>
 
+    <!--void insertList(List<Award> list);-->
+    <insert id="insertList" parameterType="java.util.List">
+        insert into award(award_id, award_type, award_name, award_content, create_time, update_time)
+        values
+        <foreach collection="list" separator="," item="item">
+            (
+            #{item.awardId},
+            #{item.awardType},
+            #{item.awardName},
+            #{item.awardContent},
+            NOW(),
+            NOW()
+            )
+        </foreach>
+    </insert>
 </mapper>

@@ -1,5 +1,5 @@
 create database lottery_01;
-use lottery_01;
+
 -- auto-generated definition
 create table user_take_activity
 (

@@ -36,4 +36,6 @@ public interface IStrategyDetailDao {
      */
     int deductStock(StrategyDetail strategyDetailReq);
 
+    void insertStrategyDetail(List<StrategyDetail> strategyDetailList);
+
 }

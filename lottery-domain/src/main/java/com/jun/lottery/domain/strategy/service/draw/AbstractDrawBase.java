@@ -4,12 +4,8 @@ import com.jun.lottery.common.Constants;
 import com.jun.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.jun.lottery.domain.strategy.model.req.DrawReq;
 import com.jun.lottery.domain.strategy.model.res.DrawResult;
-import com.jun.lottery.domain.strategy.model.vo.AwardRateInfo;
-import com.jun.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import com.jun.lottery.domain.strategy.model.vo.*;
 import com.jun.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import com.jun.lottery.infrastructure.po.Award;
-import com.jun.lottery.infrastructure.po.Strategy;
-import com.jun.lottery.infrastructure.po.StrategyDetail;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -28,7 +24,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
     public DrawResult doDrawExec(DrawReq req) {
         // 1. 获取抽奖策略
         StrategyRich strategyRich = super.queryStrategyRich(req.getStrategyId());
-        Strategy strategy = strategyRich.getStrategy();
+        StrategyBriefVO strategy = strategyRich.getStrategy();
 
         // 2. 校验抽奖策略是否已经初始化到内存
         this.checkAndInitRateData(req.getStrategyId(), strategy.getStrategyMode(), strategyRich.getStrategyDetailList());
@@ -68,7 +64,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
      * @param strategyMode       抽奖策略模式
      * @param strategyDetailList 抽奖策略详情
      */
-    private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetailList) {
+    private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetailBriefVO> strategyDetailList) {
 
         // 非单项概率，不必存入缓存
 //        if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) {
@@ -84,7 +80,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
 
         // 解析并初始化中奖概率数据到散列表
         List<AwardRateInfo> awardRateInfoList = new ArrayList<>(strategyDetailList.size());
-        for (StrategyDetail strategyDetail : strategyDetailList) {
+        for (StrategyDetailBriefVO strategyDetail : strategyDetailList) {
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
         }
         // 调用策略的初始化方法
@@ -106,8 +102,8 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             return new DrawResult(uId, strategyId, Constants.DrawState.FAIL.getCode());
         }
 
-        Award award = super.queryAwardInfo(awardId);
-        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardName(),award.getAwardType(),award.getAwardContent());
+        AwardBriefVO award = super.queryAwardInfo(awardId);
+        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardType(), award.getAwardName(), award.getAwardContent());
         log.info("执行策略抽奖完成【已中奖】，用户：{} 策略ID：{} 奖品ID：{} 奖品名称：{}", uId, strategyId, awardId, award.getAwardName());
 
         return new DrawResult(uId, strategyId, Constants.DrawState.SUCCESS.getCode(), drawAwardInfo);

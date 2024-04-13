@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSON;
 import com.jun.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.jun.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 import com.jun.lottery.domain.strategy.service.draw.AbstractDrawBase;
-import com.jun.lottery.infrastructure.po.Award;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

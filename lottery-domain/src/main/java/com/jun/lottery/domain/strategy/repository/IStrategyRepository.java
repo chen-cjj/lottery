@@ -4,8 +4,9 @@ package com.jun.lottery.domain.strategy.repository;
  * 提供仓储服务，可以认为是mvc中的service层，去调用dao方法
  * */
 
+import com.jun.lottery.domain.activity.model.vo.AwardVO;
 import com.jun.lottery.domain.strategy.model.aggregates.StrategyRich;
-import com.jun.lottery.infrastructure.po.Award;
+import com.jun.lottery.domain.strategy.model.vo.AwardBriefVO;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface IStrategyRepository {
 
     StrategyRich queryStrategyRich(Long strategyId);
 
-    Award queryAwardInfo(String awardId);
+    AwardBriefVO queryAwardInfo(String awardId);
 
     List<String> queryNoStockStrategyAwardList(Long strategyId);
 

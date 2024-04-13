@@ -33,4 +33,11 @@
         WHERE activity_id = #{activityId}
     </select>
 
+    <!--int alterState(AlterStateVO alterStateVO);-->
+    <update id="alterState" parameterType="com.jun.lottery.domain.activity.model.vo.AlterStateVO">
+        update activity
+        set state = #{afterState}
+        where activity_id = #{activityId} and state = #{beforeState}
+    </update>
+
 </mapper>

@@ -1,4 +1,4 @@
-package com.jun.lottery.domain.award.repository.impl;
+package com.jun.lottery.infrastructure.repository;
 /*
  * @author cjj
  * */
