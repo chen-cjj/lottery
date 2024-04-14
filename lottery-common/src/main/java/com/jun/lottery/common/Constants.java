@@ -257,4 +257,15 @@ public class Constants {
         }
     }
 
+    /**
+     * 三种策略生成id
+     */
+    public enum ids {
+        /** 雪花算法 */
+        SnowFlake,
+        /** 日期算法 */
+        ShortCode,
+        /** 随机算法 */
+        RandomNumeric;
+    }
 }

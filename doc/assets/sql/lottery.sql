@@ -13,7 +13,7 @@
 
  Date: 04/09/2021 16:24:34
 */
-use lottery;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
