@@ -1,5 +1,9 @@
 package com.jun.lottery.domain.activity.service.partake;
 
+
+import com.jun.lottery.domain.activity.model.req.PartakeReq;
+import com.jun.lottery.domain.activity.model.res.PartakeResult;
+
 /**
  * @description: 抽奖活动参与接口
  * @author: 小傅哥，微信：fustack
@@ -10,8 +14,10 @@ package com.jun.lottery.domain.activity.service.partake;
 public interface IActivityPartake {
 
     /**
-     * TODO：待开发活动参与接口
+     * 参与活动
+     * @param req 入参
+     * @return    领取结果
      */
-    void doPartake();
+    PartakeResult doPartake(PartakeReq req);
 
 }

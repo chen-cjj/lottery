@@ -4,11 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.jun.lottery.common.Constants;
 import com.jun.lottery.domain.activity.model.aggregates.ActivityConfigRich;
 import com.jun.lottery.domain.activity.model.req.ActivityConfigReq;
+import com.jun.lottery.domain.activity.model.req.PartakeReq;
+import com.jun.lottery.domain.activity.model.res.PartakeResult;
 import com.jun.lottery.domain.activity.model.vo.ActivityVO;
 import com.jun.lottery.domain.activity.model.vo.AwardVO;
 import com.jun.lottery.domain.activity.model.vo.StrategyDetailVO;
 import com.jun.lottery.domain.activity.model.vo.StrategyVO;
 import com.jun.lottery.domain.activity.service.deploy.IActivityDeploy;
+import com.jun.lottery.domain.activity.service.partake.IActivityPartake;
 import com.jun.lottery.domain.activity.service.stateflow.IStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -31,6 +34,8 @@ import java.util.List;
 @SpringBootTest
 public class ActivityTest {
 
+    @Resource
+    private IActivityPartake activityPartake;
     @Resource
     private IActivityDeploy activityDeploy;
 
@@ -167,5 +172,11 @@ public class ActivityTest {
         log.info("运行活动，测试：{}", JSON.toJSONString(stateHandler.doing(100001L, Constants.ActivityState.PASS)));
         log.info("二次提审，测试：{}", JSON.toJSONString(stateHandler.checkPass(100001L, Constants.ActivityState.EDIT)));
     }
-
+    @Test
+    public void test_activityPartake() {
+        PartakeReq req = new PartakeReq("Uhdgkw766120d", 100001L);
+        PartakeResult res = activityPartake.doPartake(req);
+        log.info("请求参数：{}", JSON.toJSONString(req));
+        log.info("测试结果：{}", JSON.toJSONString(res));
+    }
 }
