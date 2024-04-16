@@ -11,10 +11,10 @@ public class PartakeResult extends Result {
      */
     private Long strategyId;
 
-    public PartakeResult(String code, String info, Long strategyId) {
-        super(code, info);
-        this.strategyId = strategyId;
-    }
+    /**
+     * 活动领取ID
+     */
+    private Long takeId;
 
     public PartakeResult(String code, String info) {
         super(code, info);
@@ -26,5 +26,13 @@ public class PartakeResult extends Result {
 
     public void setStrategyId(Long strategyId) {
         this.strategyId = strategyId;
+    }
+
+    public Long getTakeId() {
+        return takeId;
+    }
+
+    public void setTakeId(Long takeId) {
+        this.takeId = takeId;
     }
 }
