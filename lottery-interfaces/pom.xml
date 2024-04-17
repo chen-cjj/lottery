@@ -70,6 +70,8 @@
             <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
 
+
+
         <!-- MapStruct begin -->
         <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
         <dependency>
@@ -81,6 +83,7 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
+
         <!-- MapStruct end -->
 
         <!-- 业务包 -->
@@ -104,6 +107,7 @@
             <artifactId>lottery-application</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
 
     </dependencies>
 
