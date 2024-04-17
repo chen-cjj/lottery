@@ -70,6 +70,19 @@
             <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- MapStruct begin -->
+        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+        <!-- MapStruct end -->
+
         <!-- 业务包 -->
         <dependency>
             <groupId>com.jun.lottery</groupId>

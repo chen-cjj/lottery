@@ -61,7 +61,17 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public AwardBriefVO queryAwardInfo(String awardId) {
-        return awardDao.queryAwardInfo(awardId);
+
+        Award award = awardDao.queryAwardInfo(awardId);
+
+        // 可以使用 BeanUtils.copyProperties(award, awardBriefVO)、或者基于ASM实现的Bean-Mapping，但在效率上最好的依旧是硬编码
+        AwardBriefVO awardBriefVO = new AwardBriefVO();
+        awardBriefVO.setAwardId(award.getAwardId());
+        awardBriefVO.setAwardType(award.getAwardType());
+        awardBriefVO.setAwardName(award.getAwardName());
+        awardBriefVO.setAwardContent(award.getAwardContent());
+
+        return awardBriefVO;
     }
 
     @Override

@@ -23,7 +23,7 @@ public interface IAwardDao {
      * @param awardId 奖品ID
      * @return        奖品信息
      */
-    AwardBriefVO queryAwardInfo(String awardId);
+    Award queryAwardInfo(String awardId);
 
     /**
      * 插入奖品配置

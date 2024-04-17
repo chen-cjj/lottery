@@ -1,18 +1,27 @@
-package com.jun.lottery.domain.strategy.model.vo;
+package com.jun.lottery.rpc.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @description: 中奖奖品信息
- * @author：小傅哥，微信：fustack
- * @date: 2021/8/28
- * @Copyright： 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * @description: 奖品信息
+ * @author: 小傅哥，微信：fustack
+ * @date: 2021/10/16
+ * @github: https://github.com/fuzhengwei
+ * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
-public class DrawAwardInfo {
+public class AwardDTO implements Serializable {
+
     /**
      * 用户ID
      */
-    private String uId;
+    private String userId;
+
+    /**
+     * 活动ID
+     */
+    private Long activityId;
+
     /**
      * 奖品ID
      */
@@ -47,33 +56,16 @@ public class DrawAwardInfo {
      */
     private Date grantDate;
 
-    public DrawAwardInfo() {
+    public AwardDTO(String userId) {
+        this.userId = userId;
     }
 
-    public String getuId() {
-        return uId;
+    public Long getActivityId() {
+        return activityId;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
-
-    public DrawAwardInfo(String awardId, Integer awardType, String awardName, String awardContent) {
-        this.awardId = awardId;
-        this.awardType = awardType;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-    }
-
-    public DrawAwardInfo(String uId, String awardId, Integer awardType, String awardName, String awardContent, Integer strategyMode, Integer grantType, Date grantDate) {
-        this.uId = uId;
-        this.awardId = awardId;
-        this.awardType = awardType;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-        this.strategyMode = strategyMode;
-        this.grantType = grantType;
-        this.grantDate = grantDate;
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
     }
 
     public String getAwardId() {
@@ -131,4 +123,20 @@ public class DrawAwardInfo {
     public void setGrantDate(Date grantDate) {
         this.grantDate = grantDate;
     }
+
+    @Override
+    public String toString() {
+        return "AwardDTO{" +
+                "userId='" + userId + '\'' +
+                ", activityId=" + activityId +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                ", strategyMode=" + strategyMode +
+                ", grantType=" + grantType +
+                ", grantDate=" + grantDate +
+                '}';
+    }
+
 }

@@ -2,11 +2,9 @@ package com.jun.lottery;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
@@ -14,7 +12,6 @@ import java.util.Map;
  * Create by 小傅哥(fustack)
  */
 public class ApiTest {
-
     /**
      * 抽奖策略测试
      * <p>
@@ -134,14 +131,14 @@ class DrawStrategy {
     private String[] rateTuple = new String[128];
 
     /**
-     *
      * 初始化概率索引数组
      * 不同奖项概率 0.20、0.30、0.50，调整为三个奖项的范围值；
      * 一等奖：0-20
      * 二等奖：21-30
      * 三等奖：51-100
-     *
+     * <p>
      * 再把各个区间范围填充到数组中，索引位置和对应的奖品值
+     *
      * @param drawConfig
      */
     public void initRateTuple(List<Map<String, String>> drawConfig) {
@@ -163,6 +160,7 @@ class DrawStrategy {
 
     /**
      * 随机抽奖
+     *
      * @return 中奖结果
      */
     public String randomDraw() {
