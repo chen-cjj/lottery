@@ -6,6 +6,7 @@ package com.jun.lottery.domain.activity.service.deploy.impl;
 import com.alibaba.fastjson.JSON;
 import com.jun.lottery.domain.activity.model.aggregates.ActivityConfigRich;
 import com.jun.lottery.domain.activity.model.req.ActivityConfigReq;
+import com.jun.lottery.domain.activity.model.vo.ActivityVO;
 import com.jun.lottery.domain.activity.repository.IActivityRepository;
 import com.jun.lottery.domain.activity.service.deploy.IActivityDeploy;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -48,4 +50,10 @@ public class ActivityDeployImpl implements IActivityDeploy {
     public void updateActivity(ActivityConfigReq req) {
         // 后续补充
     }
+
+    @Override
+    public List<ActivityVO> scanToDoActivityList(Long id) {
+        return activityRepository.scanToDoActivityList(id);
+    }
+
 }

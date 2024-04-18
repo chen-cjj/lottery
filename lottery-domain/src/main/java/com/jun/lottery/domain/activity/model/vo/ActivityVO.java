@@ -11,6 +11,11 @@ import java.util.Date;
  */
 public class ActivityVO {
 
+
+    /**
+     * 自增ID
+     */
+    private Long id;
     /**
      * 活动ID
      */
@@ -106,6 +111,14 @@ public class ActivityVO {
 
     public Integer getTakeCount() {
         return takeCount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTakeCount(Integer takeCount) {
