@@ -38,8 +38,9 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
     @Resource
     private IUserStrategyExportDao userStrategyExportDao;
 
+
     @Override
-    public int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId, Date partakeDate) {
+    public int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId) {
         if (null == userTakeLeftCount) {
             UserTakeActivityCount userTakeActivityCount = new UserTakeActivityCount();
             userTakeActivityCount.setuId(uId);
@@ -128,4 +129,12 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
         return userTakeActivityVO;
     }
 
+    @Override
+    public void updateInvoiceMqState(String uId, Long orderId, Integer mqState) {
+        UserStrategyExport userStrategyExport = new UserStrategyExport();
+        userStrategyExport.setuId(uId);
+        userStrategyExport.setOrderId(orderId);
+        userStrategyExport.setMqState(mqState);
+        userStrategyExportDao.updateInvoiceMqState(userStrategyExport);
+    }
 }

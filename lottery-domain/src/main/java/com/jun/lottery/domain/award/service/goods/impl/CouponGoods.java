@@ -33,9 +33,5 @@ public class CouponGoods extends DistributionBase implements IDistributionGoods 
     }
 
 
-    @Override
-    public Integer getDistributionGoodsName() {
-        return Constants.AwardType.CouponGoods.getCode();
-    }
 
 }

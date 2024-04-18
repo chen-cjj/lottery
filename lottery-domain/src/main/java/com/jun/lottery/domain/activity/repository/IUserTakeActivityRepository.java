@@ -22,15 +22,14 @@ public interface IUserTakeActivityRepository {
     /**
      * 扣减个人活动参与次数
      *
-     * @param activityId        活动ID
+             * @param activityId        活动ID
      * @param activityName      活动名称
      * @param takeCount         活动个人可领取次数
      * @param userTakeLeftCount 活动个人剩余领取次数
      * @param uId               用户ID
-     * @param partakeDate       领取时间
      * @return 更新结果
      */
-    int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId, Date partakeDate);
+    int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId);
 
     /**
      * 领取活动
@@ -66,10 +65,18 @@ public interface IUserTakeActivityRepository {
     /**
      * 查询是否存在未执行抽奖领取活动单【user_take_activity 存在 state = 0，领取了但抽奖过程失败的，可以直接返回领取结果继续抽奖】
      *
-     * @param activityId    活动ID
-     * @param uId           用户ID
-     * @return              领取单
+     * @param activityId 活动ID
+     * @param uId        用户ID
+     * @return 领取单
      */
     UserTakeActivityVO queryNoConsumedTakeActivityOrder(Long activityId, String uId);
 
+    /**
+     * 更新发货单MQ状态
+     *
+     * @param uId     用户ID
+     * @param orderId 订单ID
+     * @param mqState MQ 发送状态
+     */
+    void updateInvoiceMqState(String uId, Long orderId, Integer mqState);
 }

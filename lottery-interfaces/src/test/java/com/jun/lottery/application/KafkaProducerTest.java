@@ -1,8 +1,9 @@
 package com.jun.lottery.application;
 
 
-import com.jun.lottery.application.mq.KafkaProducer;
-import lombok.extern.slf4j.Slf4j;
+import com.jun.lottery.application.mq.producer.KafkaProducer;
+import com.jun.lottery.common.Constants;
+import com.jun.lottery.domain.activity.model.vo.InvoiceVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,19 +20,32 @@ import javax.annotation.Resource;
  * @github: https://github.com/fuzhengwei
  * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
-@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class KafkaProducerTest {
+
+    private Logger logger = LoggerFactory.getLogger(KafkaProducerTest.class);
+
     @Resource
     private KafkaProducer kafkaProducer;
 
     @Test
     public void test_send() throws InterruptedException {
-        // 循环发送消息
-        while (true) {
-            kafkaProducer.send("你好，我是Lottery 001");
-            Thread.sleep(3500);
+
+        InvoiceVO invoice = new InvoiceVO();
+        invoice.setuId("fustack");
+        invoice.setOrderId(1444540456057864192L);
+        invoice.setAwardId("3");
+        invoice.setAwardType(Constants.AwardType.DESC.getCode());
+        invoice.setAwardName("Code");
+        invoice.setAwardContent("苹果电脑");
+        invoice.setShippingAddress(null);
+        invoice.setExtInfo(null);
+
+        kafkaProducer.sendLotteryInvoice(invoice);
+
+        while (true){
+            Thread.sleep(10000);
         }
     }
 }

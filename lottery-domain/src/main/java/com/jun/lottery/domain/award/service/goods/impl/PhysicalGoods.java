@@ -31,9 +31,5 @@ public class PhysicalGoods extends DistributionBase implements IDistributionGood
         return new DistributionRes(req.getuId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
     }
 
-    @Override
-    public Integer getDistributionGoodsName() {
-        return Constants.AwardType.PhysicalGoods.getCode();
-    }
 
 }

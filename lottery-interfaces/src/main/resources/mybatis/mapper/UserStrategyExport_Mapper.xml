@@ -40,4 +40,16 @@
         WHERE u_id = #{uId}
     </select>
 
+
+    <update id="updateUserAwardState" parameterType="com.jun.lottery.infrastructure.po.UserStrategyExport">
+        UPDATE user_strategy_export SET grant_state = #{grantState}, grant_date = now(), update_time = now()
+        WHERE u_id = #{uId} AND order_id = #{orderId} AND award_id = #{awardId}
+    </update>
+
+    <update id="updateInvoiceMqState" parameterType="com.jun.lottery.infrastructure.po.UserStrategyExport">
+        UPDATE user_strategy_export SET mq_state = #{mqState}, update_time = now()
+        WHERE u_id = #{uId} AND order_id = #{orderId}
+    </update>
+
+
 </mapper>
